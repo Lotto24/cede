@@ -2,7 +2,6 @@ package cede
 
 import (
 	"fmt"
-	"github.com/MQasimSarfraz/cede/pkg/config"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/iam"
@@ -10,13 +9,12 @@ import (
 	"github.com/pkg/errors"
 	"os"
 	"path"
+	"srv-git-01-hh1.alinghi.tipp24.net/zig/cede/pkg/config"
 	"strings"
 	"time"
 )
 
 const CachePath = "/tmp/cede-cache"
-
-var ErrKeyNotFound = errors.New("key not found")
 
 var cache = diskv.New(diskv.Options{
 	BasePath:     CachePath,
@@ -46,12 +44,13 @@ func PrintIAMKey(username string) error {
 	}
 
 	// fall back to fetch from IAM
-	if key, kErr := keyFromIAM(username, cfg); kErr == nil {
-		fmt.Println(key)
-		return nil
+	key, kErr := keyFromIAM(username, cfg)
+	if kErr != nil {
+		return errors.WithMessage(kErr, "getting key from iam")
 	}
 
-	return ErrKeyNotFound
+	fmt.Println(key)
+	return nil
 }
 
 // PrintIAMUsers prints the permitted users in IAM

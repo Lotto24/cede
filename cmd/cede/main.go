@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/MQasimSarfraz/cede/pkg/cede"
 	"os"
+	"srv-git-01-hh1.alinghi.tipp24.net/zig/cede/pkg/cede"
 	"strings"
 )
 
