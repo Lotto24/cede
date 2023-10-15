@@ -18,4 +18,4 @@ docker run -it --rm \
   -v "$PWD":/src \
   -w /src \
   -e GITHUB_TOKEN="${GITHUB_TOKEN}" \
-  goreleaser/goreleaser:latest release --rm-dist
+  goreleaser/goreleaser:latest release --clean
