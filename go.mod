@@ -10,7 +10,7 @@ require (
 )
 
 require (
-	github.com/google/btree v1.0.0 // indirect
+	github.com/google/btree v1.1.2 // indirect
 	github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af // indirect
 	github.com/stretchr/testify v1.8.4 // indirect
 	golang.org/x/net v0.17.0 // indirect
